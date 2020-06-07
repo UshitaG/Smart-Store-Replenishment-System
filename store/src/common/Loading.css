@@ -1,0 +1,19 @@
+.Loading {
+  display: inline-block;
+  border: 5px solid #0f273d;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: rotate 1s infinite linear;
+  margin-left: 600px;
+  margin-top: 300px;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}

@@ -1,0 +1,45 @@
+.Employee-container {
+  overflow-x: auto; /* Needed for table to be responsive */
+  margin-top: 60px;
+}
+
+.Employee {
+  width: 50%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin-left: 325px;
+  margin-top: 20px;
+}
+
+.Employee-head {
+  background-color: #0f273d;
+}
+
+.Employee-title {
+  font-size: 24px;
+  font-weight: 300;
+  color: #0f273d;
+  margin-left: 540px;
+}
+
+.Employee-head tr th {
+  padding: 10px 20px;
+  color: #fff;
+  text-align: center;
+  font-size: 15px;
+  font-weight: 600;
+  border-bottom: #0f273d;
+}
+
+.Employee-body {
+  text-align: center;
+  background-color: #fff;
+  font-size: 14px;
+}
+
+.Employee-body tr td {
+  padding: 10px 10px;
+  border-bottom: 2px solid #0c2033;
+  color: #0f273d;
+  cursor: pointer;
+}

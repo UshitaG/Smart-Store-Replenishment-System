@@ -1,0 +1,34 @@
+.Header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  background-color: #0f273d;
+  width: 100%;
+  height: 80px;
+}
+/* .Popup-display {
+  font-size: 15px;
+  font-weight: 600;
+  align-items: center;
+  justify-content: center;
+  color: #0f273d;
+  margin-left: 300px;
+} */
+.Header-logo {
+  position: absolute;
+  top: 5px;
+  left: 20px;
+  width: 90px;
+}
+
+.Header-button {
+  margin-left: 700px;
+}
+
+@media (max-width: 700px) {
+  .Header-logo {
+    display: none;
+  }
+}
