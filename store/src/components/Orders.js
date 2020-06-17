@@ -16,6 +16,8 @@ class Orders extends React.Component {
     this.showitemsfromdb();
     this.setState({ loading: true });
   }
+
+  //Fetch items for which order has been placed for replenishment
   showitemsfromdb = () => {
     axios
       .get("http://localhost:5000/current")
@@ -55,10 +57,7 @@ class Orders extends React.Component {
           </thead>
           <tbody className="Order-body">
             {items.map(item => (
-              <tr
-                key={item._id}
-                //onClick={() => history.push(`/currency/${currency.id}`)}
-              >
+              <tr key={item._id}>
                 <td>{item.name}</td>
                 <td>{item.machine_no}</td>
                 <td>{item.current_weight / item.per_unit_weight}</td>

@@ -11,10 +11,7 @@ class Item extends Component {
   render() {
     const { item } = this.state;
     return (
-      <tr
-        key={item._id}
-        //onClick={() => history.push(`/currency/${currency.id}`)}
-      >
+      <tr key={item._id}>
         <td>{item.machine_no}</td>
         <td>{item.name}</td>
         <td>{item.current_weight / item.per_unit_weight}</td>

@@ -14,6 +14,8 @@ class Table extends Component {
     this.showitemsfromdb();
     this.setState({ loading: true });
   }
+
+  //Display all items on the home page
   showitemsfromdb = () => {
     axios
       .get("http://localhost:5000")
@@ -26,6 +28,7 @@ class Table extends Component {
       });
   };
 
+  //Delete an item or machine from store
   onDeleteHandler = no => {
     axios
       .delete("http://localhost:5000/deleteitem", {

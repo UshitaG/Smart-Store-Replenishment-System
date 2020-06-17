@@ -26,6 +26,7 @@ class Detail extends React.Component {
     this.fetchCurrency(shelf);
   }
 
+  //Fetch details of current item
   fetchCurrency(shelf) {
     axios
       .get(`http://localhost:5000/item/${shelf}`)
@@ -54,6 +55,7 @@ class Detail extends React.Component {
     this.setState({ item: currentState });
   }
 
+  //Edit details of a particular item
   onChangeHandler = Id => {
     this.setState({ loading: true });
     axios

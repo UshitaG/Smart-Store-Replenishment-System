@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+      Software Workaround
+    </title>
+    <style>
+      button {
+        background-color: "white";
+        border: darkslategray;
+        color: #0f273d;
+        text-align: center;
+        padding: 10px 10px;
+        border-radius: 20%;
+        font-weight: 600;
+        /* margin-left: 165px; */
+        margin-left: 30px;
+        margin-top: 20px;
+        font-size: 20;
+      }
+    </style>
+  </head>
+  <!-- <body>
+    <div
+      style="background-color:#0f273d;width: 40%;
+      max-width: 200px;
+      margin-top: 10px;
+      padding: 10px 10px 0;
+      border-radius: 4px;
+      
+      box-shadow: 0px 0px 40px 0px#1f364d;
+      align-content: center;
+      align-items: center;
+      justify-content: center;
+      justify-items: center;
+      color:white;
+      text-align: center;
+      margin-left: 450px"
+    >
+      <div style="padding: 10px">Shelf No: {{ data.machine_no }}</div>
+      <div style="padding: 10px">Item Name: {{ data.name }}</div>
+      <div style="padding: 10px">Current weight: {{ data.current_weight }}</div>
+    </div>
+    <div
+      style=" border-radius: 20px;
+    background-color: #1f364d;
+    font-size: 14px;
+    color: #fff;
+    padding: 10px 10px;
+    margin-left: 350px;
+    margin-top: 30px;
+    max-width: 420px;
+    font-weight: 600;
+    font-size: 16px"
+    >
+      <form action="/output/" method="post" id="form1">
+        {%csrf_token%} Output weight of load cell:
+        <input
+          style="border-radius: 20px;
+        background-color:slategrey;
+        font-size: 14px;
+        color: #fff;
+        padding: 8px 12px;
+        margin-left: 10px;"
+          type="text"
+          name="params"
+          required
+        />
+        <br />
+        <br />
+      </form>
+
+      <button type="submit" form="form1">
+        Update Weight
+      </button>
+    </div>
+    {% if data1 %}
+    <div
+      style="background-color:#0f273d;width: 40%;
+      max-width: 200px;
+      margin-top: 10px;
+      padding: 10px 10px 0;
+      border-radius: 4px;
+      
+      box-shadow: 0px 0px 40px 0px#1f364d;
+      align-content: center;
+      align-items: center;
+      justify-content: center;
+      justify-items: center;
+      color:white;
+      text-align: center;
+      margin-left: 450px"
+    >
+      <div style="padding: 10px">Shelf No: {{ data1.machine_no }}</div>
+      <div style="padding: 10px">Item Name: {{ data1.name }}</div>
+      <div style="padding: 10px">
+        Current weight: {{ data1.current_weight }}
+      </div>
+    </div>
+    {%endif%}
+  </body> -->
+  <body>
+        {% load mathfilters %}
+    <div
+      style="background-color:#0f273d;width: 40%;
+  max-width: 400px;
+  margin-top: 10px;
+  padding: 20px 20px 20px 20px;
+  border-radius: 4px;
+  
+  box-shadow: 0px 0px 40px 0px#1f364d;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
+  color:white;
+  text-align: center;
+  margin-left: 450px;
+  font-weight: 500"
+    >
+      Change current weight in database varying the stock (similar to when
+      measured by the load cell)
+      <div>
+        <button onclick="location.href='{% url 'script' %}'">Start</button>
+      </div>
+    </div>
+    {%if data%}
+    <div
+      style="background-color:#0f273d;width: 80%;
+      max-width: 400px;
+      margin-top: 20px;
+      padding: 10px 10px 0;
+      
+      box-shadow: 0px 0px 40px 0px#1f364d;
+      align-content: center;
+      align-items: center;
+      justify-content: center;
+      justify-items: center;
+      color:white;
+      text-align: center;
+      margin-left: 450px"
+    > Old weight
+    <hr>
+      <div style="padding: 10px">Shelf No: {{ data.machine_no }}</div>
+      <div style="padding: 10px">Item Name: {{ data.name }}</div>
+      <div style="padding: 10px">Current weight: {{ data.current_weight }}</div>
+      <div style="padding: 10px">Stock: {{data.current_weight|intdiv:data.per_unit_weight }}</div>
+
+    </div>
+    
+    {%ifequal data1 "initial"%}
+      <div
+        style="background-color:rgb(149, 160, 160);width: 80%;
+      max-width: 400px;
+      padding: 3px 10px 0;  
+    
+      color:white;
+      text-align: center;
+      margin-left: 450px"
+      >
+        Reduce weight (Stock goes below threshold)
+
+        <button style="background-color: #0f273d;color:white;margin-top:5px"onclick="location.href='{% url 'reduce' %}'">Reduce</button>
+      </div>
+    </div>
+    {%endifequal%}
+    {%endif%} 
+    {%if data2%}
+    <div
+      style="background-color:#0f273d;width: 80%;
+      max-width: 400px;
+      margin-top: 20px;
+      padding: 10px 10px 0;
+      
+      box-shadow: 0px 0px 40px 0px#1f364d;
+      align-content: center;
+      align-items: center;
+      justify-content: center;
+      justify-items: center;
+      color:white;
+      text-align: center;
+      margin-left: 450px"
+    >
+    New Weight
+    <hr>
+      <div style="padding: 10px">Shelf No: {{ data2.machine_no }}</div>
+      <div style="padding: 10px">Item Name: {{ data2.name }}</div>
+      <div style="padding: 10px">
+        Current weight: {{ data2.current_weight }}
+      </div>      
+      <div style="padding: 10px">Stock: {{data2.current_weight|intdiv:data2.per_unit_weight }}</div>
+    </div>
+      <div
+      style="background-color:rgb(149, 160, 160);width: 80%;
+    max-width: 400px;
+    padding: 3px 10px 0;
+    
+    color:white;
+    text-align: center;
+    margin-left: 450px"
+    >
+    {%ifequal data1 "low"%}
+      Increase weight (Stock replenished)
+
+      <button style="background-color: #0f273d;color:white;margin-top:5px"onclick="location.href='{% url 'increase' %}'">Increase</button>
+      {%endifequal%}
+      {%ifequal data1 "high"%}
+      Reduce weight (Stock exhausted)
+
+      <button style="background-color: #0f273d;color:white;margin-top:5px"onclick="location.href='{% url 'reduce' %}'">Reduce</button>
+      {%endifequal%}
+    </div>
+    </div>
+    {%endif%}
+  </body>
+</html>

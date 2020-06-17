@@ -30,6 +30,8 @@ class Employee extends React.Component {
     this.showempfromdb();
     this.setState({ loading: true });
   }
+
+  //Show list of all current employees
   showempfromdb = () => {
     axios
       .get("http://localhost:5000/emp")

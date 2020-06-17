@@ -63,7 +63,7 @@ setInterval(function() {
             console.log(err);
           } else {
             var mailOptions = {
-              from: "chocolily26@gmail.com",
+              from: "lowes.store99@gmail.com",
               to: emp.employee_email,
               subject: "Replenish Shelf",
               text: `Shelf No: ${h}\nItem Name: ${name} \nStock remaning: ${stock} \nNumber of Units: ${units}`

@@ -28,35 +28,30 @@ class EmpInput extends Component {
     this.setState({ emp: currentState });
   }
 
+  //Add a new employee to the store
   onChangeHandler = () => {
     this.setState({ loading: true });
 
     axios
       .post("http://localhost:5000/addemp", {
-        //id: Id,
         employee_name: this.state.emp.employee_name,
         employee_code: this.state.emp.employee_code,
         employee_contact: this.state.emp.employee_contact,
         employee_email: this.state.emp.employee_email
       })
-      .then(
-        res => {
-          if (res.data.name == "MongoError") {
-            alert(
-              "Duplicate Employee Code:    " + res.data.keyValue.employee_code
-            );
-            this.setState({ loading: false });
-          } else {
-            this.props.onClose();
-          }
+      .then(res => {
+        if (res.data.name == "MongoError") {
+          alert(
+            "Duplicate Employee Code:    " + res.data.keyValue.employee_code
+          );
+          this.setState({ loading: false });
+        } else {
+          this.props.onClose();
         }
-
-        //alert("Deleted the item :   " + res.data);
-      )
+      })
       .catch(e => {
         console.log(e);
       });
-    //console.log(this.state.item);
   };
   render() {
     const { emp, loading } = this.state;
