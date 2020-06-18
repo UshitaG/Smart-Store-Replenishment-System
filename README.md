@@ -15,3 +15,6 @@ Hardware Code: Consists of the python files which is put on the Raspberry Pi. Th
 
 Software Fix: The django server which on button clicks generates random weights, below and above threshold (to trigger replenishment emails and restocking for the items). This is the software fix built since we did not have our hardware with us during the second round due to the unfortunate lockdown.
 
+To run the project run all the three Backend, Frontend and Hardware code.
+Since currently the hardware is connected, run the Software Fix.
+Follow the instructions in the respective README to run the complete project.
