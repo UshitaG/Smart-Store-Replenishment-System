@@ -36,7 +36,7 @@ while True:
         val = hx.get_weight(60) #Gets weight every 1 minute
         list.append(val)
         if len(list)==5:
-            avg=sum(list/len(list))
+            avg=sum(list)/len(list)
 	    result = collection.update_one({"machine_no": 1}, {"$set": {"current_weight": avg}})
             print(result)
             list.clear();
