@@ -1,6 +1,6 @@
 import RPi.GPIO as GPIO
 import time
-
+import numpy
 
 class HX711:
     def __init__(self, dout, pd_sck, gain=128):
