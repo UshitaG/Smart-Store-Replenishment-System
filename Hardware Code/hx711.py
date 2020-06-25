@@ -157,7 +157,6 @@ class HX711:
         self.REFERENCE_UNIT = reference_unit
 
     # HX711 datasheet states that setting the PDA_CLOCK pin on high for >60 microseconds would power off the chip.
-    # I used 100 microseconds, just in case.
     # I've found it is good practice to reset the hx711 if it wasn't used for more than a few seconds.
     def power_down(self):
         GPIO.output(self.PD_SCK, False)
